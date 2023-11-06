@@ -1,11 +1,9 @@
-import Navbar1 from "./components/Navbar1";
-import Navbar2 from "./components/Navbar2";
+import HomePage from "./pages/HomePage";
 
 export default function App() {
   return (
     <div className="App">
-     <Navbar1/>
-     <Navbar2/>
+      <HomePage></HomePage>
     </div>
   );
 };

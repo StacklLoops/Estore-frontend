@@ -1,10 +1,14 @@
-import React from 'react'
-
+import React from "react";
+import CategorysFeature from "../components/CategorysFeature";
+import Navbar from "../components/Navbar";
 function HomePage() {
   return (
-    <div><h1>this is home page</h1>
+    <div>
+      <Navbar>
+        <CategorysFeature></CategorysFeature>
+      </Navbar>
     </div>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;
