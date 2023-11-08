@@ -1,5 +1,7 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Link } from "react-router-dom";
+
 import {
   Bars3Icon,
   ShoppingCartIcon,
@@ -18,11 +20,6 @@ const navigation = [
   { name: "Projects", href: "#", current: false },
   { name: "Calendar", href: "#", current: false },
   { name: "Reports", href: "#", current: false }
-];
-const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" }
 ];
 
 function classNames(...classes) {
@@ -105,21 +102,35 @@ function Navbar({ children }) {
                         leaveTo="transform opacity-0 scale-95"
                       >
                         <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                          {userNavigation.map((item) => (
-                            <Menu.Item key={item.name}>
-                              {({ active }) => (
-                                <a
-                                  href={item.href}
-                                  className={classNames(
-                                    active ? "bg-gray-100" : "",
-                                    "block px-4 py-2 text-sm text-gray-700"
-                                  )}
-                                >
-                                  {item.name}
-                                </a>
-                              )}
-                            </Menu.Item>
-                          ))}
+                          <Menu.Item>
+                            <Link
+                              className={
+                                "hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"
+                              }
+                            >
+                              Your Profile
+                            </Link>
+                          </Menu.Item>
+                          <Menu.Item>
+                            <Link
+                              to="/login"
+                              className={
+                                "hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"
+                              }
+                            >
+                              Login
+                            </Link>
+                          </Menu.Item>
+                          <Menu.Item>
+                            <Link
+                              to="/Signup"
+                              className={
+                                "hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"
+                              }
+                            >
+                              Sign up
+                            </Link>
+                          </Menu.Item>
                         </Menu.Items>
                       </Transition>
                     </Menu>
@@ -189,16 +200,22 @@ function Navbar({ children }) {
                   </span>
                 </div>
                 <div className="mt-3 space-y-1 px-2">
-                  {userNavigation.map((item) => (
+                  <Link to="/login">
                     <Disclosure.Button
-                      key={item.name}
                       as="a"
-                      href={item.href}
                       className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
                     >
-                      {item.name}
+                      Login
                     </Disclosure.Button>
-                  ))}
+                  </Link>
+                  <Link to="/Signup">
+                    <Disclosure.Button
+                      as="a"
+                      className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                    >
+                      Signup
+                    </Disclosure.Button>
+                  </Link>
                 </div>
               </div>
             </Disclosure.Panel>
@@ -208,8 +225,7 @@ function Navbar({ children }) {
 
       <header className="bg-white shadow flex flex-grow">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8 flex ">
-          
-          <div className="relative sm:max-w-full w-[500px]">
+          <div className="relative ">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <svg
                 className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -230,8 +246,8 @@ function Navbar({ children }) {
             <input
               type="search"
               id="default-search"
-              className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Search Mockups, Logos..."
+              className="block w-full p-4 pl-10 px-44 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Search ..."
               required
             />
             <button
