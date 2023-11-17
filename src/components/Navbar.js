@@ -1,12 +1,12 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Link } from "react-router-dom";
 
 import {
   Bars3Icon,
   ShoppingCartIcon,
   XMarkIcon
 } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
 const user = {
   name: "Tom Cook",
@@ -28,7 +28,7 @@ function classNames(...classes) {
 
 function Navbar({ children }) {
   return (
-    <div className="min-h-full">
+    <div className="min-h-full w-full ">
       <Disclosure as="nav" className="bg-gray-800">
         {({ open }) => (
           <>
@@ -36,11 +36,13 @@ function Navbar({ children }) {
               <div className="flex h-16 items-center justify-between">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
-                    <img
-                      className="h-8 w-8"
-                      src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                      alt="Your Company"
-                    />
+                    <Link to="/">
+                      <img
+                        className="h-8 w-8"
+                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                        alt="Your Company"
+                      />
+                    </Link>
                   </div>
                   <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline space-x-4">
@@ -64,17 +66,20 @@ function Navbar({ children }) {
                 </div>
                 <div className="hidden md:block">
                   <div className="ml-4 flex items-center md:ml-6">
-                    <button
-                      type="button"
-                      className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                    >
-                      <span className="absolute -inset-1.5" />
-                      <span className="sr-only">View notifications</span>
-                      <ShoppingCartIcon
-                        className="h-6 w-6"
-                        aria-hidden="true"
-                      />
-                    </button>
+                    <Link to="/cart">
+                      <button
+                        type="button"
+                        className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                      >
+                        <span className="absolute -inset-1.5" />
+                        <span className="sr-only">View notifications</span>
+                        <ShoppingCartIcon
+                          className="h-6 w-6"
+                          aria-hidden="true"
+                        />
+                      </button>
+                    </Link>
+
                     <span class="inline-flex items-center rounded-full bg-yellow-50 px-2 py-1 mb-6 -ml-2 z-10 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">
                       3
                     </span>
@@ -103,34 +108,32 @@ function Navbar({ children }) {
                       >
                         <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                           <Menu.Item>
-                            <Link
-                              className={
-                                "hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"
-                              }
-                            >
+                            <span className="hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700">
                               Your Profile
-                            </Link>
+                            </span>
                           </Menu.Item>
-                          <Menu.Item>
-                            <Link
-                              to="/login"
-                              className={
-                                "hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"
-                              }
-                            >
-                              Login
-                            </Link>
-                          </Menu.Item>
-                          <Menu.Item>
-                            <Link
-                              to="/Signup"
-                              className={
-                                "hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"
-                              }
-                            >
-                              Sign up
-                            </Link>
-                          </Menu.Item>
+                          <Link to="/login">
+                            <Menu.Item>
+                              <span
+                                className={
+                                  "hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"
+                                }
+                              >
+                                Login
+                              </span>
+                            </Menu.Item>
+                          </Link>
+                          <Link to="/signup">
+                            <Menu.Item>
+                              <span
+                                className={
+                                  "hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"
+                                }
+                              >
+                                Signup
+                              </span>
+                            </Menu.Item>
+                          </Link>
                         </Menu.Items>
                       </Transition>
                     </Menu>
@@ -200,6 +203,14 @@ function Navbar({ children }) {
                   </span>
                 </div>
                 <div className="mt-3 space-y-1 px-2">
+                  <Link>
+                    <Disclosure.Button
+                      as="a"
+                      className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                    >
+                      Your Profile
+                    </Disclosure.Button>
+                  </Link>
                   <Link to="/login">
                     <Disclosure.Button
                       as="a"
@@ -208,7 +219,7 @@ function Navbar({ children }) {
                       Login
                     </Disclosure.Button>
                   </Link>
-                  <Link to="/Signup">
+                  <Link to="/signup">
                     <Disclosure.Button
                       as="a"
                       className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
