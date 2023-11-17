@@ -1,12 +1,12 @@
 import React from "react";
 import CategorysFeature from "../components/CategorysFeature";
-import Navbar from "../components/Navbar";
+import Slider from "../components/Slider";
+
 function HomePage() {
   return (
     <div>
-      <Navbar>
-        <CategorysFeature></CategorysFeature>
-      </Navbar>
+    <Slider/>
+      <CategorysFeature></CategorysFeature>
     </div>
   );
 }
